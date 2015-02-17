@@ -11,17 +11,4 @@ class ClubsController < ApplicationController
    end
   end
 
-  private
-
-  def authenticate
-    redirect_to login_path unless current_student
-  end
-
-    def current_student
-      if session[:student_id]
-        @current_student ||= Student.find(session[:student_id])
-      end
-    end
-
-
   end

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     Student.find_by_id(session[:student_id])
   end
 
+  def authenticate
+    redirect_to login_path, :notice => 'You must be logged in to visit that page.' unless current_student
+  end
+
   helper_method :current_student
 
 end
