@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-
+  before_action :authenticate
   def index
     @students = Student.all
   end
@@ -8,4 +8,15 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
+  private
+
+  def authenticate
+    redirect_to login_path, unless current_student
+  end
+
+  def current_student
+    if session[:student_id]
+      @current_student ||= Student.find(session[:student_id])
+    end
+  end
 end

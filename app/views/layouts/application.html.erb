@@ -22,10 +22,12 @@
           <a class="navbar-brand" href="/">gSchool</a>
         </div>
         <div class="collapse navbar-collapse">
+          <% if current_student %>
           <ul class="nav navbar-nav">
             <li><%= link_to 'My Clubs', clubs_path %></li>
             <li><%= link_to 'My Peeps', students_path %></li>
           </ul>
+          <% end %>
           <ul class="nav navbar-nav navbar-right">
             <% if current_student %>
               <li><%= link_to 'Logout', logout_path %></li>
